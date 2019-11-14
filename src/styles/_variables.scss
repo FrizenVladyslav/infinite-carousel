@@ -1,0 +1,11 @@
+$carouselWidth: 1000px;
+$defaultFontSize: 20px;
+$controlSize: 50px;
+$thickness: 5px;
+$angle: 40deg;
+$angleHover: 30deg;
+$angleActive: 25deg;
+
+:export {
+  carouselWidth: $carouselWidth;
+}

@@ -1,0 +1,88 @@
+@import "variables";
+@import "mixins";
+
+#app {
+  width: $carouselWidth;
+  height: 700px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.wrapper {
+  display: flex;
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+  box-shadow:
+   0 1px 4px rgba(0, 0, 0, .3),
+   -23px 0 20px -23px rgba(0, 0, 0, .8),
+   23px 0 20px -23px rgba(0, 0, 0, .8),
+   0 0 40px rgba(0, 0, 0, .1) inset;
+}
+
+.carousel {
+  display: flex;
+  position: relative;
+}
+
+.slide {
+  $repeat: 20;
+  min-width: $carouselWidth;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  font-size: $defaultFontSize;
+}
+
+.move {
+  transition: left .2s ease-out;
+}
+
+.active {
+  transform: translateX(0);
+  z-index: 2;
+}
+
+.control {
+  position: absolute;
+  top: calc(50% - #{$controlSize / 2});
+  height: $controlSize;
+  width: $controlSize;
+  outline: none;
+  z-index: 3;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  transform: translate3d(0,0,0);
+
+  i {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: $controlSize;
+    height: $thickness;
+    border-radius: $thickness / 2;
+    background: #000;
+    transition: all 0.15s ease;
+  }
+
+  &-left {
+    left: -$controlSize / 3;
+    i { transform-origin: 0% 50%}
+    @include arrowTransform( $angle, 0, -1px );
+    &:hover { @include arrowTransform( $angleHover, 0, -1px ) }
+    &:active { @include arrowTransform( $angleActive, 1px, -1px ); }
+  }
+
+  &-right {
+    left: $carouselWidth - $controlSize / 2;
+    i { transform-origin: 100% 50% }
+    @include arrowTransform( $angle, 0, 1px );
+    &:hover { @include arrowTransform( $angleHover, 0, 1px ) }
+    &:active { @include arrowTransform( $angleActive, 1px, 1px ) }
+  }
+}

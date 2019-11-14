@@ -1,0 +1,9 @@
+@mixin arrowTransform( $angle, $x: 0, $y: 0 ) {
+  i:first-child {
+    transform: translate( $x, $y ) rotate( $angle );
+  }
+
+  i:last-child {
+    transform: translate( $x, -$y ) rotate( -$angle );
+  }
+}
